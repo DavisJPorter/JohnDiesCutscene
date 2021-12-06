@@ -46,22 +46,6 @@ public class PlayerMovement : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetButtonDown("Crouch"))
-        {
-            controller.height = 1f;
-            controller.center = new Vector3(0f, -0.5f, 0f);
-            walkSpeed = crouchSpeed;
-            isCrouching = true;
-        }
-
-        if (!Input.GetButton("Crouch") && isCrouching)
-        {
-                walkSpeed = crouchSpeed;
-                controller.height = originalHeight;
-            controller.center = originalCenter;
-            isCrouching = false;
-            crouchSpeed = originalMoveSpeed;
-        }
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
         if(isGrounded && velocity.y < 0){
